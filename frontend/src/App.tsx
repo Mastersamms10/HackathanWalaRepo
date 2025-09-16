@@ -17,6 +17,7 @@ import HospitalsDash from './components/HospitalsDash'
 import Patients from './components/Patients'
 import Hdash from './components/hdash'
 import AboutUs from './components/AboutUs'
+import DashboardDon from './components/DashboardDon'
 // Future pages can be imported here
 // import DonorDashboard from './pages/DonorDashboard'
 // import RequestBloodPage from './pages/RequestBloodPage'
@@ -34,7 +35,7 @@ function App() {
         <Route path="/registerH" element={<HospitalRegistrationForm/>} />
         <Route path="/registerP" element={<PatientRegistrationForm/>} />
         <Route path="/registerD" element={<DonorRegistrationForm/>} />
-        <Route path="/dashD" element={<Donors/>} />
+        <Route path="/dashD" element={<DashboardDon/>} />
         <Route path="/dashP" element={<Patient/>} />
         <Route path="/dashH" element={<Hdash/>} />
         {/* Future routes */}
