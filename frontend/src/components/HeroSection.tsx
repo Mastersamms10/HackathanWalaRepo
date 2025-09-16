@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import BloodRequestModal from './BloodRequestModal';
 
 const HeroSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const slides = [
     {
@@ -86,8 +88,11 @@ const HeroSection = () => {
           <p className="text-xl md:text-2xl text-white mb-12 drop-shadow-lg max-w-2xl mx-auto px-4">
             Every donation can save up to 3 lives. Be a hero in someone's story.
           </p>
-          <button className="bg-red-700 hover:bg-red-800 text-white px-12 py-4 rounded-full text-xl font-bold shadow-2xl transform hover:scale-105 transition-all duration-300 hover:shadow-red-500/50">
-            Request Blood – RakhtSetu
+          <button 
+            onClick={() => setIsModalOpen(true)}
+            className="bg-red-700 hover:bg-red-800 text-white px-12 py-4 rounded-full text-xl font-bold shadow-2xl transform hover:scale-105 transition-all duration-300 hover:shadow-red-500/50"
+          >
+            Emergency Blood Request– RakhtSetu
           </button>
         </div>
       </div>
@@ -104,6 +109,13 @@ const HeroSection = () => {
           />
         ))}
       </div>
+      
+      <BloodRequestModal
+  key={isModalOpen ? 'open' : 'closed'} // forces remount
+  isOpen={isModalOpen}
+  onClose={() => setIsModalOpen(false)}
+/>
+
     </div>
   );
 };

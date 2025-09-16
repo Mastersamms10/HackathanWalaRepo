@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
 import { ChevronDown, Heart, Menu, X } from 'lucide-react';
+import { useNavigate } from 'react-router-dom'
+
 
 const Navigation = () => {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+const navigate = useNavigate()
+
+
 
   return (
     <nav className="fixed top-0 left-0 right-0 bg-white shadow-lg z-50">
@@ -20,7 +25,7 @@ const Navigation = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <a href="#home" className="text-gray-700 hover:text-red-700 hover:underline transition-colors font-medium">
+            <a href="/" className="text-gray-700 hover:text-red-700 hover:underline transition-colors font-medium">
               Home
             </a>
             <a href="#community" className="text-gray-700 hover:text-red-700 hover:underline transition-colors font-medium">
@@ -45,13 +50,13 @@ const Navigation = () => {
               
               {isLoginOpen && (
                 <div className="absolute right-0 mt-2 w-32 bg-white rounded-lg shadow-lg border">
-                  <a href="#donor-login" className="block px-4 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-700">
+                  <a href="/loginD" className="block px-4 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-700">
                     Donor
                   </a>
-                  <a href="#patient-login" className="block px-4 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-700">
+                  <a href="/loginP" className="block px-4 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-700">
                     Patient
                   </a>
-                  <a href="#hospital-login" className="block px-4 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-700">
+                  <a href="/loginH" className="block px-4 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-700">
                     Hospital
                   </a>
                 </div>
@@ -88,7 +93,7 @@ const Navigation = () => {
               </a>
               <div className="border-t pt-2">
                 <p className="px-3 py-1 text-sm font-medium text-gray-500">Login as:</p>
-                <a href="#donor-login" className="block px-3 py-2 text-gray-700 hover:text-red-700 hover:bg-red-50">
+                <a href="#register" className="block px-3 py-2 text-gray-700 hover:text-red-700 hover:bg-red-50">
                   Donor
                 </a>
                 <a href="#patient-login" className="block px-3 py-2 text-gray-700 hover:text-red-700 hover:bg-red-50">
