@@ -24,7 +24,9 @@ function HomePage() {
   }
 
   if (isLoading) {
+    
     return <LoadingScreen onLoadingComplete={handleLoadingComplete} />
+    
   }
 
   return (

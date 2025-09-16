@@ -28,13 +28,11 @@ const navigate = useNavigate()
             <a href="/" className="text-gray-700 hover:text-red-700 hover:underline transition-colors font-medium">
               Home
             </a>
-            <a href="#community" className="text-gray-700 hover:text-red-700 hover:underline transition-colors font-medium">
+            {/* <a href="#community" className="text-gray-700 hover:text-red-700 hover:underline transition-colors font-medium">
               Community
-            </a>
-            <a href="#services" className="text-gray-700 hover:text-red-700 hover:underline transition-colors font-medium">
-              Services
-            </a>
-            <a href="#about" className="text-gray-700 hover:text-red-700 hover:underline transition-colors font-medium">
+            </a> */}
+            
+            <a href="/about" className="text-gray-700 hover:text-red-700 hover:underline transition-colors font-medium">
               About Us
             </a>
             

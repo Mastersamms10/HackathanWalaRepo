@@ -13,6 +13,10 @@ import DonorLogin from './components/DonorLogin'
 import Donors from './components/Donors'
 import Patient from './components/Patient'
 import Hospitals from './components/Hospitals'
+import HospitalsDash from './components/HospitalsDash'
+import Patients from './components/Patients'
+import Hdash from './components/hdash'
+import AboutUs from './components/AboutUs'
 // Future pages can be imported here
 // import DonorDashboard from './pages/DonorDashboard'
 // import RequestBloodPage from './pages/RequestBloodPage'
@@ -23,6 +27,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/register" element={<Registration />} />
+        <Route path="/about" element={<AboutUs />} />
         <Route path="/loginH" element={<HospitalLogin />} />
         <Route path="/loginp" element={<PatientLoginForm />} />
         <Route path="/loginD" element={<DonorLogin />} />
@@ -31,7 +36,7 @@ function App() {
         <Route path="/registerD" element={<DonorRegistrationForm/>} />
         <Route path="/dashD" element={<Donors/>} />
         <Route path="/dashP" element={<Patient/>} />
-        <Route path="/dashH" element={<Hospitals/>} />
+        <Route path="/dashH" element={<Hdash/>} />
         {/* Future routes */}
         {/* <Route path="/donor" element={<DonorDashboard />} /> */}
         {/* <Route path="/request" element={<RequestBloodPage />} /> */}
