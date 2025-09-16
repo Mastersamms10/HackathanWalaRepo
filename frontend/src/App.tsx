@@ -1,26 +1,22 @@
-import React from 'react';
-import Navigation from './components/Navigation';
-import HeroSection from './components/HeroSection';
-import Sidebar from './components/Sidebar';
-import InfoSection from './components/InfoSection';
-import PreviousCamps from './components/PreviousCamps';
-import Footer from './components/Footer';
+// src/App.tsx
+import React from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import HomePage from './pages/HomePage'
+// Future pages can be imported here
+// import DonorDashboard from './pages/DonorDashboard'
+// import RequestBloodPage from './pages/RequestBloodPage'
 
 function App() {
   return (
-    <div className="min-h-screen bg-white">
-      <Navigation />
-      <div className="flex">
-        <main className="flex-1">
-          <HeroSection />
-          <InfoSection />
-          <PreviousCamps />
-        </main>
-        <Sidebar />
-      </div>
-      <Footer />
-    </div>
-  );
+    <Router>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        {/* Future routes */}
+        {/* <Route path="/donor" element={<DonorDashboard />} /> */}
+        {/* <Route path="/request" element={<RequestBloodPage />} /> */}
+      </Routes>
+    </Router>
+  )
 }
 
-export default App;
+export default App

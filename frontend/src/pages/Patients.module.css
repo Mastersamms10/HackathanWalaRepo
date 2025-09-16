@@ -1,0 +1,252 @@
+.patients {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.header {
+  margin-bottom: 32px;
+}
+
+.header h2 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0 0 8px 0;
+}
+
+.header p {
+  font-size: 16px;
+  color: #64748b;
+  margin: 0;
+}
+
+.tableContainer {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e2e8f0;
+  overflow: hidden;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th {
+  background: #f8fafc;
+  padding: 20px 16px;
+  text-align: left;
+  font-weight: 600;
+  color: #1e293b;
+  border-bottom: 1px solid #e2e8f0;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.tableRow {
+  transition: all 0.2s ease;
+}
+
+.tableRow:hover {
+  background: #f8fafc;
+}
+
+.tableRow:not(:last-child) {
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.table td {
+  padding: 20px 16px;
+  vertical-align: middle;
+}
+
+.patientInfo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.patientAvatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: #dbeafe;
+  border-radius: 50%;
+}
+
+.avatarIcon {
+  width: 20px;
+  height: 20px;
+  color: #2563eb;
+}
+
+.patientName {
+  display: block;
+  font-size: 16px;
+  color: #1e293b;
+  margin-bottom: 4px;
+}
+
+.patientId {
+  font-size: 12px;
+  color: #64748b;
+}
+
+.contactInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.contactItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #64748b;
+}
+
+.contactIcon {
+  width: 16px;
+  height: 16px;
+}
+
+.bloodRequirement {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.bloodGroup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 36px;
+  border-radius: 18px;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.bloodGroup.red {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.bloodGroup.blue {
+  background: #dbeafe;
+  color: #2563eb;
+}
+
+.bloodGroup.green {
+  background: #d1fae5;
+  color: #10b981;
+}
+
+.bloodGroup.purple {
+  background: #e9d5ff;
+  color: #8b5cf6;
+}
+
+.quantity {
+  font-size: 12px;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.location {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #64748b;
+}
+
+.locationIcon {
+  width: 16px;
+  height: 16px;
+}
+
+.medicalCondition {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #64748b;
+}
+
+.conditionIcon {
+  width: 16px;
+  height: 16px;
+  color: #f59e0b;
+}
+
+.urgency {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  width: fit-content;
+}
+
+.urgency.critical {
+  background: #fee2e2;
+  color: #991b1b;
+  animation: pulse 2s infinite;
+}
+
+.urgency.high {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.urgency.medium {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.urgency.low {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.actionBtn {
+  padding: 6px 12px;
+  border: 1px solid #d1d5db;
+  background: white;
+  color: #374151;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.actionBtn:hover {
+  background: #f3f4f6;
+  border-color: #9ca3af;
+}
