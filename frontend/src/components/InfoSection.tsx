@@ -1,5 +1,4 @@
-import React from 'react';
-import { Heart, Scale, Shield, Calendar, Ban, Users, Droplet, Activity } from 'lucide-react';
+import { Activity, Ban, Calendar, Droplet, Heart, Scale, Shield, Users } from 'lucide-react';
 
 const InfoSection = () => {
   const eligibilityCards = [
@@ -85,7 +84,7 @@ const InfoSection = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="order-2 lg:order-1">
               <img
-                src="https://images.pexels.com/photos/6129642/pexels-photo-6129642.jpeg?auto=compress&cs=tinysrgb&w=800"
+                src="/public/2.jpg"
                 alt="Blood donor helping patient"
                 className="rounded-xl shadow-lg"
               />

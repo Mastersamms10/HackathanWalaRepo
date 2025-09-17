@@ -19,7 +19,7 @@ const Hdash: React.FC = () => {
   const [isSOSModalOpen, setIsSOSModalOpen] = useState<boolean>(false)
 
   const bloodData: BloodUnit[] = [
-    { bloodGroup: 'A+', units: 145, maxUnits: 200, status: 'sufficient' },
+    { bloodGroup: 'A+', units: 15, maxUnits: 200, status: 'critical' },
     { bloodGroup: 'A-', units: 67, maxUnits: 150, status: 'moderate' },
     { bloodGroup: 'B+', units: 123, maxUnits: 180, status: 'sufficient' },
     { bloodGroup: 'B-', units: 34, maxUnits: 120, status: 'critical' },

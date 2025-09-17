@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { X, MapPin, Phone, Clock, Heart, User, Droplet, Star, Filter } from 'lucide-react';
+import { Clock, Droplet, Filter, Heart, MapPin, Phone, Star, User, X } from 'lucide-react';
+import React, { useState } from 'react';
 
 interface BloodRequestModalProps {
   isOpen: boolean;
@@ -45,8 +45,8 @@ const BloodRequestModal: React.FC<BloodRequestModalProps> = ({ isOpen, onClose }
     {
       id: '2',
       name: 'Priya Sharma',
-      bloodGroup: 'O+',
-      location: 'Karol Bagh, Delhi',
+      bloodGroup: 'AB+',
+      location: 'Kolkata',
       distance: '4.1 km',
       phone: '+91 87654 32109',
       lastDonation: '2 months ago',
@@ -58,8 +58,8 @@ const BloodRequestModal: React.FC<BloodRequestModalProps> = ({ isOpen, onClose }
     {
       id: '3',
       name: 'Amit Singh',
-      bloodGroup: 'O+',
-      location: 'Lajpat Nagar, Delhi',
+      bloodGroup: 'O-',
+      location: 'Mumbai',
       distance: '5.7 km',
       phone: '+91 76543 21098',
       lastDonation: '1 month ago',
@@ -71,8 +71,8 @@ const BloodRequestModal: React.FC<BloodRequestModalProps> = ({ isOpen, onClose }
     {
       id: '4',
       name: 'Sneha Patel',
-      bloodGroup: 'O+',
-      location: 'Dwarka, Delhi',
+      bloodGroup: 'A-',
+      location: 'Delhi',
       distance: '8.2 km',
       phone: '+91 65432 10987',
       lastDonation: '4 months ago',
@@ -80,25 +80,98 @@ const BloodRequestModal: React.FC<BloodRequestModalProps> = ({ isOpen, onClose }
       rating: 4.6,
       totalDonations: 15,
       avatar: 'https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&w=150'
-    }
+    },
+    {
+      id: '9',
+      name: 'Jiya Patel',
+      bloodGroup: 'AB+',
+      location: 'Chennai',
+      distance: '6.2 km',
+      phone: '+91 65432 10987',
+      lastDonation: '9 months ago',
+      availability: 'available',
+      rating: 2.6,
+      totalDonations: 3,
+      avatar: 'https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&w=150'
+    },
+    {
+      id: '5',
+      name: 'Ria Oswal',
+      bloodGroup: 'A+',
+      location: 'Pune',
+      distance: '3.2 km',
+      phone: '+91 63562 10237',
+      lastDonation: '2 months ago',
+      availability: 'available',
+      rating: 4.2,
+      totalDonations: 12,
+      avatar: '/public/ria.jpg?auto=compress&cs=tinysrgb&w=150'
+    },
+    {
+      id: '6',
+      name: 'Hetvi Patel',
+      bloodGroup: 'A+',
+      location: 'Pune',
+      distance: '8.2 km',
+      phone: '+91 65432 10987',
+      lastDonation: '4 months ago',
+      availability: 'available',
+      rating: 3.5,
+      totalDonations: 1,
+      avatar: 'https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&w=150'
+    },
+    {
+      id: '7',
+      name: 'Pratham Saiya',
+      bloodGroup: 'A-',
+      location: 'New Delhi',
+      distance: '2.6 km',
+      phone: '+91 99432 60987',
+      lastDonation: 'Null',
+      availability: 'available',
+      rating: 0.0,
+      totalDonations: 0,
+      avatar: 'https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=150'
+    },
+    {
+      id: '8',
+      name: 'Neha Sharma',
+      bloodGroup: 'B-',
+      location: 'Bangalore',
+      distance: '1.2 km',
+      phone: '+91 97026 10987',
+      lastDonation: '4 months ago',
+      availability: 'available',
+      rating: 4.6,
+      totalDonations: 15,
+      avatar: 'https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&w=150'
+    },
+
+
   ];
 
   const bloodGroups = ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'];
   const locations = ['Delhi', 'Mumbai', 'Bangalore', 'Chennai', 'Kolkata', 'Pune'];
 
   const handleSearch = () => {
-    if (!selectedBloodGroup || !selectedLocation) return;
-    
-    setIsLoading(true);
-    setShowResults(false);
-    
-    // Simulate API call
-    setTimeout(() => {
-      setDonors(mockDonors.filter(donor => donor.bloodGroup === selectedBloodGroup));
-      setIsLoading(false);
-      setShowResults(true);
-    }, 2000);
-  };
+  if (!selectedBloodGroup || !selectedLocation) return;
+
+  setIsLoading(true);
+  setShowResults(false);
+
+  setTimeout(() => {
+    const filtered = mockDonors.filter((donor) => {
+      const matchesBlood = donor.bloodGroup === selectedBloodGroup;
+      const matchesLocation = donor.location.toLowerCase().includes(selectedLocation.toLowerCase());
+      return matchesBlood && matchesLocation;
+    });
+
+    setDonors(filtered);
+    setIsLoading(false);
+    setShowResults(true);
+  }, 2000);
+};
+
 
   const getAvailabilityColor = (availability: string) => {
     switch (availability) {
@@ -136,7 +209,7 @@ const BloodRequestModal: React.FC<BloodRequestModalProps> = ({ isOpen, onClose }
               <Droplet className="w-8 h-8 fill-current" />
             </div>
             <div>
-              <h2 className="text-2xl font-bold">Emergency Request Blood</h2>
+              <h2 className="text-2xl font-bold">Request Blood</h2>
               <p className="text-red-100">Find donors near you in real-time</p>
             </div>
           </div>
@@ -281,17 +354,17 @@ const BloodRequestModal: React.FC<BloodRequestModalProps> = ({ isOpen, onClose }
                         </div>
                         
                         <div className="mt-4 flex space-x-2">
-                          <button
+                          <label
                             className={`flex-1 py-2 px-4 rounded-lg font-medium text-sm transition-colors ${
                               donor.availability === 'available'
                                 ? 'bg-green-600 hover:bg-green-700 text-white'
                                 : 'bg-gray-300 text-gray-500 cursor-not-allowed'
                             }`}
-                            disabled={donor.availability !== 'available'}
+                           // disabled={donor.availability !== 'available'}
                           >
                             <Phone className="w-4 h-4 inline mr-1" />
-                            Contact
-                          </button>
+                            Contact{donor.phone && `: ${donor.phone}`}
+                          </label>
                           <button className="flex-1 py-2 px-4 bg-red-50 hover:bg-red-100 text-red-600 rounded-lg font-medium text-sm transition-colors">
                             <User className="w-4 h-4 inline mr-1" />
                             Profile

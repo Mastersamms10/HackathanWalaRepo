@@ -41,7 +41,7 @@ const HospitalRegistrationForm: React.FC = () => {
     email: '',
     contactNo: ''
   });
-
+  const navigate = useNavigate();
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -119,34 +119,17 @@ const HospitalRegistrationForm: React.FC = () => {
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    const newErrors = validateForm();
-    setErrors(newErrors);
+  e.preventDefault();
 
-    if (Object.keys(newErrors).length === 0) {
-      setIsSubmitting(true);
-      
-      // Simulate API call
-      try {
-        await new Promise(resolve => setTimeout(resolve, 2000));
-        console.log('Hospital registration:', formData);
-        alert('Hospital registration successful! (This is a demo)');
-      } catch (error) {
-        console.error('Registration error:', error);
-        alert('Registration failed. Please try again.');
-      } finally {
-        setIsSubmitting(false);
-      }
-    }
-  };
-const navigate = useNavigate();
-const re= ()=>{
-navigate('/registerH');
-}
-const re3= ()=>{
-navigate('/dashH');
-}
+  const newErrors = validateForm();
+  setErrors(newErrors);
+
+  if (Object.keys(newErrors).length === 0) {
+    setIsSubmitting(true);
+ navigate("/dashH");
+   
+  }
+};
   return (
     <div className={styles.container}>
       <div className={styles.registrationCard}>
@@ -411,7 +394,6 @@ navigate('/dashH');
 
           <button
             type="submit"
-            onClick={re3}
             disabled={isSubmitting}
             className={styles.submitButton}
             aria-describedby="submit-status"

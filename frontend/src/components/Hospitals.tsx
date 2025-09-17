@@ -3,53 +3,18 @@ import { CheckCircle, XCircle, Mail, Phone, MapPin } from 'lucide-react';
 import styles from './Hospitals.module.css';
 
 const Hospitals: React.FC = () => {
-  const hospitalsData = [
-    {
-      id: 1,
-      name: 'City General Hospital',
-      email: 'admin@citygeneral.com',
-      contact: '+1-555-0123',
-      city: 'New York',
-      state: 'NY',
-      status: 'Active',
-    },
-    {
-      id: 2,
-      name: 'Memorial Medical Center',
-      email: 'contact@memorial.org',
-      contact: '+1-555-0124',
-      city: 'Los Angeles',
-      state: 'CA',
-      status: 'Verified',
-    },
-    {
-      id: 3,
-      name: 'St. Mary\'s Hospital',
-      email: 'info@stmarys.com',
-      contact: '+1-555-0125',
-      city: 'Chicago',
-      state: 'IL',
-      status: 'Active',
-    },
-    {
-      id: 4,
-      name: 'Regional Healthcare',
-      email: 'admin@regional.net',
-      contact: '+1-555-0126',
-      city: 'Houston',
-      state: 'TX',
-      status: 'Pending',
-    },
-    {
-      id: 5,
-      name: 'University Hospital',
-      email: 'contact@university.edu',
-      contact: '+1-555-0127',
-      city: 'Phoenix',
-      state: 'AZ',
-      status: 'Verified',
-    },
-  ];
+  const [hospital, setHospital] = React.useState<any>(null);
+
+  React.useEffect(() => {
+    const stored = localStorage.getItem('hospitalData');
+    if (stored) {
+      setHospital(JSON.parse(stored));
+    }
+  }, []);
+
+  if (!hospital) {
+    return <div className={styles.hospitals}>No hospital data found. Please login.</div>;
+  }
 
   const getStatusIcon = (status: string) => {
     switch (status) {
@@ -66,8 +31,8 @@ const Hospitals: React.FC = () => {
   return (
     <div className={styles.hospitals}>
       <div className={styles.header}>
-        <h2>Hospitals Management</h2>
-        <p>Manage registered hospitals and their verification status</p>
+        <h2>Hospital Dashboard</h2>
+        <p>Welcome, {hospital.name}</p>
       </div>
 
       <div className={styles.tableContainer}>
@@ -82,46 +47,43 @@ const Hospitals: React.FC = () => {
             </tr>
           </thead>
           <tbody>
-            {hospitalsData.map((hospital) => (
-              <tr key={hospital.id} className={styles.tableRow}>
-                <td>
-                  <div className={styles.hospitalName}>
-                    <strong>{hospital.name}</strong>
-                    <span className={styles.hospitalId}>ID: #{hospital.id}</span>
+            <tr className={styles.tableRow}>
+              <td>
+                <div className={styles.hospitalName}>
+                  <strong>{hospital.name}</strong>
+                  <span className={styles.hospitalId}>UID: {hospital.uid}</span>
+                </div>
+              </td>
+              <td>
+                <div className={styles.contactInfo}>
+                  <div className={styles.contactItem}>
+                    <Mail className={styles.contactIcon} />
+                    <span>{hospital.email}</span>
                   </div>
-                </td>
-                <td>
-                  <div className={styles.contactInfo}>
-                    <div className={styles.contactItem}>
-                      <Mail className={styles.contactIcon} />
-                      <span>{hospital.email}</span>
-                    </div>
-                    <div className={styles.contactItem}>
-                      <Phone className={styles.contactIcon} />
-                      <span>{hospital.contact}</span>
-                    </div>
+                  <div className={styles.contactItem}>
+                    <Phone className={styles.contactIcon} />
+                    <span>{hospital.primary_contact}</span>
                   </div>
-                </td>
-                <td>
-                  <div className={styles.location}>
-                    <MapPin className={styles.locationIcon} />
-                    <span>{hospital.city}, {hospital.state}</span>
-                  </div>
-                </td>
-                <td>
-                  <div className={`${styles.status} ${styles[hospital.status.toLowerCase()]}`}>
-                    {getStatusIcon(hospital.status)}
-                    <span>{hospital.status}</span>
-                  </div>
-                </td>
-                <td>
-                  <div className={styles.actions}>
-                    <button className={styles.actionBtn}>View</button>
-                    <button className={styles.actionBtn}>Edit</button>
-                  </div>
-                </td>
-              </tr>
-            ))}
+                </div>
+              </td>
+              <td>
+                <div className={styles.location}>
+                  <MapPin className={styles.locationIcon} />
+                  <span>{hospital.address}</span>
+                </div>
+              </td>
+              <td>
+                <div className={`${styles.status} ${styles.active}`}>
+                  {getStatusIcon('Active')}
+                  <span>Active</span>
+                </div>
+              </td>
+              <td>
+                <div className={styles.actions}>
+                  <button className={styles.actionBtn}>Edit</button>
+                </div>
+              </td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -129,4 +91,4 @@ const Hospitals: React.FC = () => {
   );
 };
 
-export default Hospitals;
+export default Hospitals

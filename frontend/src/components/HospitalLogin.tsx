@@ -6,15 +6,16 @@ import { useNavigate } from 'react-router-dom'
 interface HospitalFormData {
   hospitalName: string
   uid: string
-  password: string
 }
 
 const HospitalLogin: React.FC = () => {
   const [formData, setFormData] = useState<HospitalFormData>({
     hospitalName: '',
-    uid: '',
-    password: '',
-  })
+    uid: ''
+  });
+  
+  const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
@@ -24,17 +25,18 @@ const HospitalLogin: React.FC = () => {
     }))
   }
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    alert(`Hospital Login Attempt:\n${JSON.stringify(formData, null, 2)}`)
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+  setIsLoading(true);
+
+   navigate("/dashH");
+    
+};
+
+  const handleRegisterRedirect = () => {
+    navigate('/registerH');
   }
-const navigate = useNavigate();
-const re= ()=>{
-navigate('/registerH');
-}
-const re3= ()=>{
-navigate('/dashH');
-}
+
   return (
     <div className={styles.container}>
       <div className={styles.loginCard}>
@@ -44,7 +46,7 @@ navigate('/dashH');
           <p className={styles.subtitle}>Access your hospital dashboard</p>
         </div>
 
-        <form className={styles.form}>
+        <form onSubmit={handleSubmit} className={styles.form}>
           <div className={styles.field}>
             <label className={styles.label}>Hospital Name *</label>
             <div className={styles.inputWrapper}>
@@ -57,6 +59,7 @@ navigate('/dashH');
                 className={styles.input}
                 required
                 placeholder="Enter hospital name"
+                disabled={isLoading}
               />
             </div>
           </div>
@@ -73,35 +76,29 @@ navigate('/dashH');
                 className={styles.input}
                 required
                 placeholder="Enter hospital UID"
+                disabled={isLoading}
               />
             </div>
           </div>
-
-          <div className={styles.field}>
-            <label className={styles.label}>Password *</label>
-            <div className={styles.inputWrapper}>
-              <Lock className={styles.inputIcon} size={18} />
-              <input
-                type="password"
-                name="password"
-                value={formData.password}
-                onChange={handleInputChange}
-                className={styles.input}
-                required
-                placeholder="Enter password"
-              />
-            </div>
-          </div>
-
-          <button onClick={re3} className={styles.loginButton}>
+          
+          <button 
+            type="submit" 
+            className={styles.loginButton}
+            disabled={isLoading}
+          >
             <Building size={18} />
-            <span>Login to Hospital Dashboard</span>
+            <span>{isLoading ? 'Logging in...' : 'Login to Hospital Dashboard'}</span>
           </button>
 
           <div className={styles.footer}>
             <p className={styles.footerText}>
               Don't have an account?{' '}
-              <button onClick={re} className={styles.footerLink}>
+              <button 
+                type="button"
+                onClick={handleRegisterRedirect} 
+                className={styles.footerLink}
+                disabled={isLoading}
+              >
                 Register your hospital
               </button>
             </p>

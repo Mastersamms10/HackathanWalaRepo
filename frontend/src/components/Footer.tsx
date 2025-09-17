@@ -1,5 +1,4 @@
-import React from 'react';
-import { Heart, Mail, Phone, MapPin, Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
+import { Facebook, Heart, Instagram, Linkedin, Mail, MapPin, Phone, Twitter } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -36,17 +35,7 @@ const Footer = () => {
           </div>
 
           {/* Quick Links */}
-          <div>
-            <h3 className="text-lg font-bold mb-4">Quick Links</h3>
-            <ul className="space-y-3">
-              <li><a href="#home" className="text-gray-300 hover:text-white hover:underline transition-colors">Home</a></li>
-              <li><a href="#community" className="text-gray-300 hover:text-white hover:underline transition-colors">Community</a></li>
-              <li><a href="#services" className="text-gray-300 hover:text-white hover:underline transition-colors">Services</a></li>
-              <li><a href="#about" className="text-gray-300 hover:text-white hover:underline transition-colors">About Us</a></li>
-              <li><a href="#donate" className="text-gray-300 hover:text-white hover:underline transition-colors">Donate Blood</a></li>
-              <li><a href="#request" className="text-gray-300 hover:text-white hover:underline transition-colors">Request Blood</a></li>
-            </ul>
-          </div>
+          
 
           {/* Contact Info */}
           <div>

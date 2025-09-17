@@ -42,7 +42,7 @@ export default function hospitalHeader() {
               <User className="w-5 h-5 text-white" />
             </div>
             <div className="text-sm">
-              <p className="font-medium text-gray-900">John Doe</p>
+              <p className="font-medium text-gray-900">Patient</p>
               <p className="text-gray-600">Patient ID: #12345</p>
             </div>
              <button

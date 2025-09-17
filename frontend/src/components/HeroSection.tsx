@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { useEffect, useState } from 'react';
 import BloodRequestModal from './BloodRequestModal';
 
 const HeroSection = () => {
@@ -8,23 +7,23 @@ const HeroSection = () => {
 
   const slides = [
     {
-      image: "https://images.pexels.com/photos/6129507/pexels-photo-6129507.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      image: "/public/1.jpg",
       alt: "Doctor treating patient with blood donor in background"
     },
     {
-      image: "https://images.pexels.com/photos/6129508/pexels-photo-6129508.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      image: "/public/2.jpg",
       alt: "Young people donating blood"
     },
     {
-      image: "https://images.pexels.com/photos/263402/pexels-photo-263402.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      image: "/public/3.jpg",
       alt: "Emergency hospital scenario"
     },
     {
-      image: "https://images.pexels.com/photos/3952231/pexels-photo-3952231.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      image: "/public/4.jpg",
       alt: "Smiling recovered patient"
     },
     {
-      image: "https://images.pexels.com/photos/6129516/pexels-photo-6129516.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      image: "/public/5.jpg",
       alt: "Blood donation camp photo"
     }
   ];
@@ -66,19 +65,8 @@ const HeroSection = () => {
       </div>
 
       {/* Navigation Arrows */}
-      <button
-        onClick={prevSlide}
-        className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-20 hover:bg-opacity-30 text-white p-3 rounded-full transition-all duration-300"
-      >
-        <ChevronLeft className="w-6 h-6" />
-      </button>
-      <button
-        onClick={nextSlide}
-        className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-20 hover:bg-opacity-30 text-white p-3 rounded-full transition-all duration-300"
-      >
-        <ChevronRight className="w-6 h-6" />
-      </button>
-
+      
+      
       {/* Center Overlay */}
       <div className="absolute inset-0 flex items-center justify-center">
         <div className="text-center">

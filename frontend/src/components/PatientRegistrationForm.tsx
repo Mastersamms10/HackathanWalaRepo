@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { AlertCircle, User, Mail, Phone, Droplet, MapPin, Map, Hash, Heart, UserCheck } from 'lucide-react';
 import styles from './PatientRegistrationForm.module.css';
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'// Adjust the path as necessary
 interface FormData {
-  fullName: string;
+  name: string;
   email: string;
   contactNo: string;
   bloodGroup: string;
@@ -15,11 +15,11 @@ interface FormData {
   state: string;
   pincode: string;
   medicalCondition: string;
-  doctorId: string;
+  doctor_reference : string;
 }
 
 interface FormErrors {
-  fullName?: string;
+  name?: string;
   email?: string;
   contactNo?: string;
   bloodGroup?: string;
@@ -30,12 +30,13 @@ interface FormErrors {
   state?: string;
   pincode?: string;
   medicalCondition?: string;
-  doctorId?: string;
+  doctor_reference ?: string;
 }
 
 const PatientRegistrationForm: React.FC = () => {
+   const navigate = useNavigate();
   const [formData, setFormData] = useState<FormData>({
-    fullName: '',
+    name: '',
     email: '',
     contactNo: '',
     bloodGroup: '',
@@ -47,8 +48,9 @@ const PatientRegistrationForm: React.FC = () => {
     state: '',
     pincode: '',
     medicalCondition: '',
-    doctorId: ''
+    doctor_reference : ''
   });
+
 
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -59,10 +61,10 @@ const PatientRegistrationForm: React.FC = () => {
     const newErrors: FormErrors = {};
 
     // Full Name validation
-    if (!formData.fullName.trim()) {
-      newErrors.fullName = 'Full name is required';
-    } else if (formData.fullName.trim().length < 2) {
-      newErrors.fullName = 'Full name must be at least 2 characters';
+    if (!formData.name.trim()) {
+      newErrors.name = 'Full name is required';
+    } else if (formData.name.trim().length < 2) {
+      newErrors.name = 'Full name must be at least 2 characters';
     }
 
     // Email validation
@@ -118,10 +120,10 @@ const PatientRegistrationForm: React.FC = () => {
     }
 
     // Doctor ID validation
-    if (!formData.doctorId.trim()) {
-      newErrors.doctorId = 'Doctor ID is required';
-    } else if (formData.doctorId.trim().length < 3) {
-      newErrors.doctorId = 'Doctor ID must be at least 3 characters';
+    if (!formData.doctor_reference .trim()) {
+      newErrors.doctor_reference  = 'Doctor ID is required';
+    } else if (formData.doctor_reference .trim().length < 3) {
+      newErrors.doctor_reference  = 'Doctor ID must be at least 3 characters';
     }
 
     return newErrors;
@@ -137,29 +139,19 @@ const PatientRegistrationForm: React.FC = () => {
 };
 
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    const newErrors = validateForm();
-    setErrors(newErrors);
+ const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  const newErrors = validateForm();
+  setErrors(newErrors);
 
-    if (Object.keys(newErrors).length === 0) {
-      setIsSubmitting(true);
-      
-      // Simulate API call
-      try {
-        await new Promise(resolve => setTimeout(resolve, 2000));
-        console.log('Patient registration:', formData);
-        alert('Patient registration successful! (This is a demo)');
-      } catch (error) {
-        console.error('Registration error:', error);
-        alert('Registration failed. Please try again.');
-      } finally {
-        setIsSubmitting(false);
-      }
-    }
-  };
- const navigate = useNavigate();
+  if (Object.keys(newErrors).length === 0) {
+    setIsSubmitting(true);
+
+    navigate('/dashP');
+  }
+};
+
+
   const re= ()=>{
   navigate('/registerP');
   }
@@ -174,7 +166,7 @@ const PatientRegistrationForm: React.FC = () => {
           <p className={styles.subtitle}>Create your patient account to access healthcare services</p>
         </div>
 
-        <form onSubmit={handleSubmit} className={styles.form} noValidate>
+        <form onSubmit={handleSubmit} className={styles.form} >
           {/* Personal Information Section */}
           <div className={styles.section}>
             <h2 className={styles.sectionTitle}>Personal Information</h2>
@@ -187,17 +179,17 @@ const PatientRegistrationForm: React.FC = () => {
               <input
                 id="fullName"
                 type="text"
-                value={formData.fullName}
-                onChange={handleInputChange('fullName')}
+                value={formData.name}
+                onChange={handleInputChange('name')}
                 placeholder="Enter your full name"
-                className={`${styles.input} ${errors.fullName ? styles.error : ''}`}
-                aria-invalid={errors.fullName ? 'true' : 'false'}
-                aria-describedby={errors.fullName ? 'fullName-error' : undefined}
+                className={`${styles.input} ${errors.name ? styles.error : ''}`}
+                aria-invalid={errors.name ? 'true' : 'false'}
+                aria-describedby={errors.name ? 'fullName-error' : undefined}
               />
-              {errors.fullName && (
+              {errors.name && (
                 <div id="fullName-error" className={styles.errorMessage} role="alert">
                   <AlertCircle className={styles.icon} />
-                  {errors.fullName}
+                  {errors.name}
                 </div>
               )}
             </div>
@@ -497,17 +489,17 @@ const PatientRegistrationForm: React.FC = () => {
               <input
                 id="doctorId"
                 type="text"
-                value={formData.doctorId}
-                onChange={handleInputChange('doctorId')}
+                value={formData.doctor_reference }
+                onChange={handleInputChange('doctor_reference')}
                 placeholder="Enter your assigned doctor's ID"
-                className={`${styles.input} ${errors.doctorId ? styles.error : ''}`}
-                aria-invalid={errors.doctorId ? 'true' : 'false'}
-                aria-describedby={errors.doctorId ? 'doctorId-error' : undefined}
+                className={`${styles.input} ${errors.doctor_reference  ? styles.error : ''}`}
+                aria-invalid={errors.doctor_reference  ? 'true' : 'false'}
+                aria-describedby={errors.doctor_reference  ? 'doctorId-error' : undefined}
               />
-              {errors.doctorId && (
+              {errors.doctor_reference  && (
                 <div id="doctorId-error" className={styles.errorMessage} role="alert">
                   <AlertCircle className={styles.icon} />
-                  {errors.doctorId}
+                  {errors.doctor_reference }
                 </div>
               )}
             </div>
@@ -515,7 +507,6 @@ const PatientRegistrationForm: React.FC = () => {
 
           <button
             type="submit"
-            onClick={re3}
             disabled={isSubmitting}
             className={styles.submitButton}
             aria-describedby="submit-status"

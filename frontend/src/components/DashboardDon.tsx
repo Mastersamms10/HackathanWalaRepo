@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
-import { 
-  User, 
-  Calendar, 
-  Heart, 
-  Clock, 
-  MapPin, 
-  Phone, 
-  Mail, 
-  Award,
+import {
   Activity,
-  Bell
+  Award,
+  Bell,
+  Calendar,
+  Clock,
+  Heart,
+  Mail,
+  MapPin,
+  Phone,
+  User
 } from 'lucide-react';
-
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 interface DonorStats {
   totalDonations: number;
   lastDonation: string;
@@ -38,7 +38,7 @@ const DashboardDon: React.FC = () => {
   const toggleAvailability = () => {
     setIsAvailable(!isAvailable);
   };
-
+  const navigate = useNavigate();
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       {/* Header */}
@@ -53,7 +53,7 @@ const DashboardDon: React.FC = () => {
             </div>
             <div className="flex items-center space-x-4">
               <Bell className="w-6 h-6 text-slate-400 hover:text-slate-600 cursor-pointer transition-colors" />
-              <div className="w-8 h-8 bg-slate-300 rounded-full"></div>
+              
             </div>
           </div>
         </div>
@@ -62,7 +62,7 @@ const DashboardDon: React.FC = () => {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Welcome Section */}
         <div className="mb-8">
-          <h2 className="text-3xl font-bold text-slate-900 mb-2">Welcome back, Sarah!</h2>
+          <h2 className="text-3xl font-bold text-slate-900 mb-2">Welcome back!</h2>
           <p className="text-slate-600">Manage your donation availability and track your impact.</p>
         </div>
 
@@ -190,13 +190,12 @@ const DashboardDon: React.FC = () => {
           <div className="bg-white rounded-xl shadow-lg border border-slate-200 p-6">
             <h3 className="text-xl font-semibold text-slate-900 mb-4">Quick Actions</h3>
             <div className="space-y-3">
-              <button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-lg transition-colors flex items-center justify-center space-x-2">
-                <Calendar className="w-5 h-5" />
-                <span>Schedule Appointment</span>
+              <button onClick={()=>navigate('/')} className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-lg transition-colors flex items-center justify-center space-x-2">
+                <span>HOME</span>
               </button>
-              <button className="w-full bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium py-3 px-4 rounded-lg transition-colors flex items-center justify-center space-x-2">
+              <button onClick={()=>navigate('/about')} className="w-full bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium py-3 px-4 rounded-lg transition-colors flex items-center justify-center space-x-2">
                 <User className="w-5 h-5" />
-                <span>Update Profile</span>
+                <span>About Us</span>
               </button>
               <button className="w-full bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium py-3 px-4 rounded-lg transition-colors flex items-center justify-center space-x-2">
                 <MapPin className="w-5 h-5" />
@@ -214,7 +213,7 @@ const DashboardDon: React.FC = () => {
                 </div>
                 <div className="flex items-center space-x-2">
                   <Mail className="w-4 h-4" />
-                  <span>help@donorhub.com</span>
+                  <span>rakhtsetu@gmail.com</span>
                 </div>
               </div>
             </div>

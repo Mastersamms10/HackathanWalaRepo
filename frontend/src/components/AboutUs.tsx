@@ -1,6 +1,6 @@
+import { AlertCircle, Building2, Heart, Users } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
-import { Heart, Users, Building2, AlertCircle } from 'lucide-react';
-
+import { useNavigate } from 'react-router-dom'
 const AboutUs: React.FC = () => {
   const [counters, setCounters] = useState({
     donors: 0,
@@ -17,7 +17,7 @@ const AboutUs: React.FC = () => {
     hospitals: 120,
     sos: 2500
   };
-
+const navigate  = useNavigate(); 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -74,25 +74,25 @@ const AboutUs: React.FC = () => {
       name: "Heet Shah",
       role: "Visionary Leader & Co-Founder",
       description: "Visionary leader with a passion for technology that saves lives. He drives the mission of RakhtSetu to connect donors and patients seamlessly.",
-      image: "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
+      image: "/public/heet.jpg"
     },
     {
       name: "Samith Samani",
       role: "Strategic Thinker & Co-Founder",
       description: "Strategic thinker and data expert, ensuring RakhtSetu's real-time reliability and precision in connecting the right donors with patients in need.",
-      image: "https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
+      image: "/public/sms.jpg"
     },
     {
       name: "Pratham Saiya",
       role: "Creative Designer & Co-Founder",
       description: "Creative designer and problem solver, making the platform intuitive and inclusive for everyone who wants to save lives through blood donation.",
-      image: "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
+      image: "/public/ps.jpg"
     },
     {
       name: "Ria Oswal",
       role: "Public Health Advocate & Co-Founder",
       description: "Public health advocate and communicator, building trust and growing our donor community to create a sustainable blood donation ecosystem.",
-      image: "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
+      image: "/public/ria.jpg"
     }
   ];
 
@@ -131,6 +131,9 @@ const AboutUs: React.FC = () => {
     }
   ];
 
+  const chal = () => {
+    navigate('/loginD');
+  }
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
@@ -249,7 +252,7 @@ const AboutUs: React.FC = () => {
             could be the gift of life someone desperately needs.
           </p>
           
-          <button className="bg-white text-red-600 px-12 py-4 rounded-full text-xl font-bold hover:bg-red-50 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl animate-pulse-gentle">
+          <button onClick={chal} className="bg-white text-red-600 px-12 py-4 rounded-full text-xl font-bold hover:bg-red-50 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl animate-pulse-gentle">
             <Heart className="w-6 h-6 inline-block mr-3" />
             Join Us – Be a Donor Today
           </button>
@@ -282,7 +285,7 @@ const AboutUs: React.FC = () => {
             Connecting donors and patients, saving lives every day.
           </p>
           <p className="text-sm text-gray-500">
-            © 2024 RakhtSetu. All rights reserved. Made with ❤️ for humanity.
+            © 2025 RakhtSetu. All rights reserved. Made with ❤️ for humanity.
           </p>
         </div>
       </footer>

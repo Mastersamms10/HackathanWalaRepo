@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
 import { ChevronLeft, ChevronRight, MapPin, Users } from 'lucide-react';
+import { useState } from 'react';
 
 const PreviousCamps = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -155,19 +155,7 @@ const PreviousCamps = () => {
         </div>
 
         {/* Call to Action */}
-        <div className="mt-12 text-center">
-          <div className="bg-gradient-to-r from-red-600 to-red-700 rounded-2xl p-8 text-white">
-            <h3 className="text-2xl md:text-3xl font-bold mb-4">
-              Host a Blood Donation Camp
-            </h3>
-            <p className="text-xl mb-6 opacity-90">
-              Partner with RakhtSetu to organize a blood donation drive in your community
-            </p>
-            <button className="bg-white text-red-600 px-8 py-3 rounded-lg font-bold hover:bg-gray-100 transition-colors duration-300">
-              Organize a Camp
-            </button>
-          </div>
-        </div>
+        
       </div>
     </div>
   );
